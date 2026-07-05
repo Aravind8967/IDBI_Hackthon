@@ -286,23 +286,6 @@ For hackathon improvements or feature suggestions:
 
 ---
 
-## 📄 License
-
-This project is created for the IDBI Hackathon. Please refer to the hackathon terms for licensing details.
-
----
-
-## 📞 Contact & Support
-
-**Project Author**: Aravind8967
-
-For questions, suggestions, or technical support:
-- 📧 Email: [Your Email]
-- 🐙 GitHub: [https://github.com/Aravind8967](https://github.com/Aravind8967)
-- 📱 LinkedIn: [Your LinkedIn]
-
----
-
 ## 🙏 Acknowledgments
 
 - **IDBI Bank** for the hackathon opportunity
