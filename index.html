@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project AURA (Advanced User Risk & Advisory) is a specialized 24/7 Digital Wealth Manager prototype developed for IDBI Bank Digital Wealth Management Track.">
+  <title>AURA - Advanced User Risk & Advisory | IDBI Bank Wealth Co-pilot</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Chart.js CDN for responsive premium charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Left Sidebar Menu -->
+    <aside class="sidebar">
+      <div>
+        <div class="logo-container">
+          <div class="idbi-logo-text">
+            <span class="brand-bank">IDBI BANK</span>
+            <span class="brand-aura">AURA</span>
+          </div>
+        </div>
+
+        <!-- Hackathon Team Info -->
+        <div class="team-badge">
+          <p>Hackathon Team</p>
+          <h4>Tech Wolf</h4>
+          <p style="margin-top: 4px; font-size: 11px;">Leader: Aravind Chindi</p>
+        </div>
+
+        <nav>
+          <ul class="sidebar-nav">
+            <li>
+              <a href="#" class="nav-item active" data-view="dashboard" id="nav-dashboard">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-view="chat" id="nav-chat">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Chat Co-Pilot
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-view="safe-to-spend" id="nav-safe-to-spend">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                Safe-to-Spend
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-view="what-if" id="nav-what-if">
+                <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                What-If Planner
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-item" data-view="products" id="nav-products">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                IDBI Products
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <p style="font-size: 11px; color: var(--text-secondary); text-align: center;">IDBI Innovate 2026</p>
+      </div>
+    </aside>
+
+    <!-- Main Section -->
+    <main class="main-content">
+      
+      <!-- Top Header Navigation -->
+      <header>
+        <div class="header-title">
+          <h1 id="app-title-main">AURA Digital Wealth Manager</h1>
+          <p id="app-subtitle-desc">Democratizing Private Wealth Management (Track 1)</p>
+        </div>
+        
+        <div class="header-controls">
+          <!-- Light/Dark Theme Switcher Toggle -->
+          <div class="theme-switch-wrapper">
+            <span style="font-size: 12px; color: var(--text-secondary);">Dark</span>
+            <label class="theme-switch" for="theme-toggle-chk">
+              <input type="checkbox" id="theme-toggle-chk" />
+              <div class="slider">
+                <div class="slider-icons">
+                  <span>🌙</span>
+                  <span>☀️</span>
+                </div>
+              </div>
+            </label>
+            <span style="font-size: 12px; color: var(--text-secondary);">Light</span>
+          </div>
+
+          <!-- User Account Pill -->
+          <div class="user-profile">
+            <div class="avatar-circle">AC</div>
+            <div style="text-align: left;">
+              <div style="font-size: 13px; font-weight:600;" id="profile-name">Aravind Chindi</div>
+              <div style="font-size: 10px; color: var(--text-secondary);" id="profile-acc">IDBI-6084-2026</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- View Containers -->
+      <div class="content-body">
+        
+        <!-- ==================== VIEW 1: DASHBOARD ==================== -->
+        <section id="dashboard-view" class="view-panel active">
+          
+          <!-- Metrics Grid -->
+          <div class="metrics-grid">
+            <div class="metric-card success">
+              <div class="metric-title">Monthly Net Income</div>
+              <div class="metric-value" id="dash-income-val">₹75,000</div>
+              <div class="metric-subtext">Base primary salary credit</div>
+            </div>
+            <div class="metric-card danger">
+              <div class="metric-title">Fixed Liabilities</div>
+              <div class="metric-value" id="dash-liabilities-val">₹39,000</div>
+              <div class="metric-subtext">Rent, EMIs, Bills & Insurance</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-title">Safe-to-Spend Baseline</div>
+              <div class="metric-value" id="dash-safe-spend-val">₹21,000</div>
+              <div class="metric-subtext">Remaining buffer for variable spend</div>
+            </div>
+            <div class="metric-card warning">
+              <div class="metric-title">Active Expense Leaks</div>
+              <div class="metric-value" id="dash-leaks-val">₹11,117</div>
+              <div class="metric-subtext" id="dash-leaks-subtext">5 active subscriptions/anomalies</div>
+            </div>
+            <div class="metric-card success">
+              <div class="metric-title">AURA Health Score</div>
+              <div class="metric-value" id="dash-health-score">78/100</div>
+              <div class="metric-subtext">Goal pacing: Optimized</div>
+            </div>
+          </div>
+
+          <!-- Graphs Area -->
+          <div class="charts-grid">
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Variable Spend Categories (Past 30 Days)</h3>
+              </div>
+              <div class="chart-container">
+                <canvas id="expensePieChart"></canvas>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">Monthly Income vs. Total Spend Mapping</h3>
+              </div>
+              <div class="chart-container">
+                <canvas id="cashFlowBarChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expense Leaks Optimization Engine -->
+          <div class="leaks-nudge-section">
+            <div class="nudge-alert-box" id="nudge-banner-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              <div class="nudge-alert-text">
+                <h4>AURA Expense Leaks Detected</h4>
+                <p>We found unused subscriptions and variable spend spikes. Redirecting them directly to an IDBI yield product stops capital decay.</p>
+              </div>
+            </div>
+
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 12px;">Active Variables & Subscriptions Leaks</h3>
+            <div class="leaks-table-container">
+              <table class="leaks-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Spike Amount</th>
+                    <th>Advisory Action</th>
+                  </tr>
+                </thead>
+                <tbody id="leaks-table-body">
+                  <!-- Injected via app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== VIEW 2: CHAT CO-PILOT ==================== -->
+        <section id="chat-view" class="view-panel">
+          
+          <div class="chat-layout">
+            <!-- Left Info Panel with Avatar -->
+            <div class="avatar-info-panel">
+              <div class="avatar-image-wrapper">
+                <img src="avatar.png" alt="AURA 2D Investment Advisor Avatar" class="avatar-image" id="advisor-avatar-img">
+                <div class="avatar-status-dot"></div>
+              </div>
+              <h3>AURA Co-Pilot</h3>
+              <p class="subtitle">AI Wealth Co-pilot</p>
+              <p class="desc">Equipped with a **Semantic Guardrail** to maintain institutional discipline, filtering out queries unrelated to personal wealth planning.</p>
+              
+              <div class="suggested-prompts">
+                <h4>Quick Prompts</h4>
+                <div class="prompt-pill" id="prompt-safetospend">What is my Safe-to-Spend limit?</div>
+                <div class="prompt-pill" id="prompt-leaks">Tell me about my expense leaks</div>
+                <div class="prompt-pill" id="prompt-products">What IDBI products should I invest in?</div>
+                <div class="prompt-pill" id="prompt-guardrail" style="border-style: dashed; color: var(--text-secondary);">Tell me a joke (Triggers Guardrail Alert)</div>
+              </div>
+            </div>
+
+            <!-- Chat Dialog Interface -->
+            <div class="chat-conversation-panel">
+              <div class="chat-messages" id="chat-messages-container">
+                <!-- Message Bubbles Injected via app.js -->
+              </div>
+              
+              <div class="chat-input-area">
+                <input type="text" placeholder="Ask AURA about budgeting, saving, or IDBI products..." id="chat-input-field" autocomplete="off">
+                <button class="send-btn" id="chat-send-btn" aria-label="Send message">
+                  <svg style="width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== VIEW 3: SAFE TO SPEND ==================== -->
+        <section id="safe-to-spend-view" class="view-panel">
+          
+          <div class="budget-editor-layout">
+            
+            <!-- Liabilities Editor -->
+            <div class="budget-config-card">
+              <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">Fixed Liabilities Manager</h3>
+              
+              <form id="add-liability-form" class="mb-4">
+                <div class="form-group">
+                  <label for="liability-name">Liability Name</label>
+                  <input type="text" id="liability-name" placeholder="e.g. Netflix, Gym Membership, Rent" required>
+                </div>
+                
+                <div class="form-row">
+                  <div class="form-group" style="flex: 2;">
+                    <label for="liability-amount">Amount (₹)</label>
+                    <input type="number" id="liability-amount" placeholder="e.g. 500" min="1" required>
+                  </div>
+                  <div class="form-group" style="flex: 2;">
+                    <label for="liability-category">Category</label>
+                    <select id="liability-category">
+                      <option value="Housing">Housing</option>
+                      <option value="Utilities">Utilities</option>
+                      <option value="Debt">Debt (EMI)</option>
+                      <option value="Insurance">Insurance</option>
+                      <option value="Subscriptions">Subscriptions</option>
+                      <option value="Other">Other Fixed</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <button type="submit" class="action-btn" style="width:100%; padding: 12px; margin-top: 10px;">Add Fixed Liability</button>
+              </form>
+
+              <h4 style="font-size: 14px; font-weight: 600; color: var(--text-secondary); margin-bottom: 12px; text-transform: uppercase;">Current Fixed Monthly Liabilities</h4>
+              <div id="liabilities-list-items">
+                <!-- Injected via app.js -->
+              </div>
+            </div>
+
+            <!-- Budget Visualizer -->
+            <div class="budget-meter-container">
+              <div class="progress-section">
+                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px;">Safe-to-Spend Budget breakdown</h3>
+                
+                <div class="form-group mb-4">
+                  <div class="flex-space">
+                    <label for="savings-goal-range" style="margin-bottom:0;">Target Monthly Savings Goal</label>
+                    <span class="fw-bold text-success" id="savings-goal-slider-val">₹15,000</span>
+                  </div>
+                  <input type="range" id="savings-goal-range" min="0" max="40000" step="1000" value="15000" style="width:100%; margin-top:10px; cursor: pointer;">
+                </div>
+
+                <div style="margin-top: 24px;">
+                  <div class="flex-space mb-4">
+                    <span>Base Monthly Income:</span>
+                    <span class="fw-bold" id="calc-income-text">₹75,000</span>
+                  </div>
+                  
+                  <div class="mb-4">
+                    <div class="flex-space" style="font-size: 13px; color: var(--text-secondary);">
+                      <span>Fixed Liabilities (Rent / EMIs):</span>
+                      <span id="calc-liabilities-text">₹39,000</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                      <div class="progress-bar-fill liabilities" id="bar-liabilities-fill"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="flex-space" style="font-size: 13px; color: var(--text-secondary);">
+                      <span>Savings Target Locked:</span>
+                      <span id="calc-savings-text">₹15,000</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                      <div class="progress-bar-fill savings" id="bar-savings-fill"></div>
+                    </div>
+                  </div>
+
+                  <div class="mb-4">
+                    <div class="flex-space" style="font-size: 14px; font-weight: 600;">
+                      <span>Available Safe-to-Spend Baseline:</span>
+                      <span class="text-accent" id="calc-safespend-text">₹21,000</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                      <div class="progress-bar-fill" id="bar-safespend-fill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Dynamics Warnings -->
+              <div id="safe-spend-alert-message" style="display: none;">
+                <!-- Alerts dynamic warning block -->
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ==================== VIEW 4: WHAT-IF PLANNER ==================== -->
+        <section id="what-if-view" class="view-panel">
+          
+          <div class="what-if-grid">
+            <!-- Controls Panel -->
+            <div class="budget-config-card">
+              <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Scenario Simulator</h3>
+              <p class="card-instructions">Test cash-flow changes (like a salary raise, a new subscription leak, or a major purchase) to see their long-term effect on your compound savings trajectory.</p>
+              
+              <div class="form-group">
+                <label for="whatif-income-change">Future Income Adjustment (₹ / month)</label>
+                <input type="number" id="whatif-income-change" value="0" step="1000" placeholder="e.g. 5000 (salary raise)">
+              </div>
+              
+              <div class="form-group">
+                <label for="whatif-expense-change">One-time Expense Simulation (₹)</label>
+                <input type="number" id="whatif-expense-change" value="0" step="5000" placeholder="e.g. 80000 (buy laptop/car)">
+              </div>
+              
+              <div class="form-group">
+                <label for="whatif-month-trigger">Month of Occurrence</label>
+                <select id="whatif-month-trigger">
+                  <option value="2">Sep 26 (In 2 months)</option>
+                  <option value="4">Nov 26 (In 4 months)</option>
+                  <option value="6">Jan 27 (In 6 months)</option>
+                  <option value="9">Apr 27 (In 9 months)</option>
+                </select>
+              </div>
+
+              <!-- Optimization Checkbox -->
+              <div class="form-group flex-align-center" style="margin-top: 24px;">
+                <input type="checkbox" id="whatif-redirect-leaks" style="width: auto; cursor: pointer;">
+                <label for="whatif-redirect-leaks" style="margin-bottom:0; cursor: pointer;">Auto-redirect leaks to IDBI SIP (+₹11,117)</label>
+              </div>
+            </div>
+
+            <!-- Simulation Line Chart -->
+            <div class="chart-card">
+              <div class="chart-header">
+                <h3 class="chart-title">12-Month Compound Wealth Forecast (14.5% p.a.)</h3>
+              </div>
+              <div class="chart-container" style="height: 320px;">
+                <canvas id="whatIfLineChart"></canvas>
+              </div>
+              
+              <div class="mt-4" id="whatif-projection-summary">
+                <!-- Forecast statement generated dynamically -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ==================== VIEW 5: IDBI PRODUCTS ==================== -->
+        <section id="products-view" class="view-panel">
+          
+          <div class="flex-space mb-4" style="align-items: flex-start; flex-direction: column; gap: 8px;">
+            <h2 style="font-size: 22px; font-weight: 700;">IDBI Bank High-Yield Wealth Products</h2>
+            <p style="font-size: 14px; color: var(--text-secondary);">Direct channels mapped to close identified expense leaks instantly</p>
+          </div>
+
+          <div class="products-grid mb-4" id="products">
+            
+            <!-- Mutual Fund Card -->
+            <div class="product-card">
+              <div>
+                <span class="product-badge">High Yield</span>
+                <h3>IDBI Equity Growth Mutual Fund (SIP)</h3>
+                <div class="product-rate">14.5% p.a.</div>
+                <p class="product-desc">Systematic Investment Plan designed to accumulate high compounding returns over medium-to-long horizons through top equity shares.</p>
+              </div>
+              <div>
+                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Minimum: ₹500/month</p>
+                <button class="action-btn" style="width:100%;" onclick="showNotificationToast('Simulating IDBI Mutual Fund SIP. Open return calculator to see projected growth.')">Select for SIP Redirect</button>
+              </div>
+            </div>
+
+            <!-- FD Card -->
+            <div class="product-card">
+              <div>
+                <span class="product-badge" style="background-color:rgba(16, 185, 129, 0.15); color: var(--success-color);">Secure Growth</span>
+                <h3>IDBI Tax-Saver Fixed Deposit</h3>
+                <div class="product-rate">7.25% p.a.</div>
+                <p class="product-desc">Secure fixed returns protected under Section 80C. Ideal for risk-averse depositors targeting guaranteed growth.</p>
+              </div>
+              <div>
+                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Minimum: ₹10,000</p>
+                <button class="action-btn" style="width:100%;" onclick="showNotificationToast('Simulating IDBI Tax-Saver FD. Open return calculator to see projected growth.')">Select for FD Redirect</button>
+              </div>
+            </div>
+
+            <!-- NPS Card -->
+            <div class="product-card">
+              <div>
+                <span class="product-badge" style="background-color:rgba(59, 130, 246, 0.15); color: #60a5fa;">Retirement</span>
+                <h3>IDBI National Pension System (NPS)</h3>
+                <div class="product-rate">9.50% p.a.</div>
+                <p class="product-desc">Government-backed retirement funding plan. Secure additional tax exemptions up to ₹50,000 under Sec 80CCD(1B).</p>
+              </div>
+              <div>
+                <p style="font-size: 12px; color: var(--text-secondary); margin-bottom: 12px;">Minimum: ₹500/month</p>
+                <button class="action-btn" style="width:100%;" onclick="showNotificationToast('Simulating IDBI NPS. Open return calculator to see projected growth.')">Select for NPS Redirect</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Compound Returns Calculator -->
+          <div class="budget-config-card" style="margin-top: 30px;">
+            <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Product Growth Calculator</h3>
+            
+            <div class="form-row">
+              <div class="form-group" style="flex: 2;">
+                <label for="calc-amount">Investment Amount (₹)</label>
+                <input type="number" id="calc-amount" value="5000" min="100">
+              </div>
+              <div class="form-group" style="flex: 1;">
+                <label for="calc-tenure">Tenure (Years)</label>
+                <select id="calc-tenure">
+                  <option value="1">1 Year</option>
+                  <option value="3">3 Years</option>
+                  <option value="5" selected>5 Years</option>
+                  <option value="10">10 Years</option>
+                </select>
+              </div>
+              <div class="form-group" style="flex: 2;">
+                <label for="calc-product-select">Select Product</label>
+                <select id="calc-product-select">
+                  <option value="sip">IDBI Equity Growth Mutual Fund (SIP - Monthly)</option>
+                  <option value="fd">IDBI Tax-Saver FD (Lump sum - Compound)</option>
+                  <option value="nps">IDBI NPS (Monthly)</option>
+                </select>
+              </div>
+            </div>
+            
+            <button class="action-btn" id="calc-returns-btn" style="padding: 12px 24px; font-size: 14px; margin-top: 10px;">Calculate Return Projections</button>
+            
+            <div id="calc-results-output">
+              <!-- Result output card injected dynamically -->
+            </div>
+          </div>
+
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Load Mock Data -->
+  <script src="data.js"></script>
+  <!-- Load App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
