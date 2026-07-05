@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  # AURA Web Application (Static site served via optimized Nginx)
+  aura-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aura_web_container
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
